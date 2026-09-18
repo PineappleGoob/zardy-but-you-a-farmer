@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cotu7inrgdmfd"]
+
+[ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="1_a202f"]
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 1
+background_color = Color(0.0031138188, 0.12986287, 0.104521535, 1)
+background_energy_multiplier = 1.16
+ambient_light_energy = 2.81
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uw5rc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uw5rc"]
+size = Vector3(15.700928, 1, 27.022827)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uw5rc"]
+size = Vector3(91.61145, 1, 26.68982)
+
+[node name="Node3D" type="Node3D" unique_id=2034477687]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1437652704]
+script = ExtResource("1_a202f")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=947739628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+environment = SubResource("Environment_noarx")
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=890038755]
+shape = SubResource("CapsuleShape3D_uw5rc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2022499981]
+transform = Transform3D(100, 0, 0, 0, 2.827, 0, 0, 0, 100, -2.7730713, -2.869259, -4.739319)
+physics_material_override = SubResource("PhysicsMaterial_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1631586474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024780273, 0, -0.19696045)
+mesh = SubResource("BoxMesh_uw5rc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=844522998]
+transform = Transform3D(0.17065446, 0, 0, 0, 1, 0, 0, 0, 1, 0.02650851, 0, 0)
+visibility_parent = NodePath("../MeshInstance3D")
+shape = SubResource("BoxShape3D_uw5rc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=113674410]
+transform = Transform3D(-0.5606389, 0.5006446, -0.6595749, 0, 0.79652995, 0.6045992, 0.8280604, 0.3389618, -0.4465657, -159.51906, 47.073338, -24.262089)
+shadow_enabled = true
