@@ -1,12 +1,17 @@
-extends Area3D
+extends Control
 
-func _on_body_entered(body):
-	if body is CharacterBody3D:
-		body.health = 0
-		print('test2')
+func show_menu():
+	modulate.a = 0.0
+	show()
+
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 1.0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	modulate.a = 0.0
+	hide()
+	show_menu()
 	pass # Replace with function body.
 
 

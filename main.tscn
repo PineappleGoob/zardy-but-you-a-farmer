@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cotu7inrgdmfd"]
 
-[ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="1_a202f"]
-[ext_resource type="Script" uid="uid://cs5olpbh80yox" path="res://animatable_body_3d.gd" id="2_a0tk4"]
-[ext_resource type="Script" uid="uid://b8ijt83s82sd6" path="res://area_3d.gd" id="3_r3fl7"]
+[ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://cs5olpbh80yox" path="res://animatable_body_3d.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://b8ijt83s82sd6" path="res://area_3d.gd" id="3_lquwl"]
 
 [sub_resource type="Environment" id="Environment_noarx"]
 background_mode = 1
@@ -63,7 +63,7 @@ shadow_enabled = true
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1437652704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6205885)
-script = ExtResource("1_a202f")
+script = ExtResource("1_h2yge")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=947739628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
@@ -127,11 +127,11 @@ shape = SubResource("BoxShape3D_wq02u")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="hurtbox" unique_id=681323795]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20103)
-script = ExtResource("2_a0tk4")
+script = ExtResource("2_1bvp3")
 
 [node name="Area3D" type="Area3D" parent="hurtbox/AnimatableBody3D" unique_id=2048499996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.20103)
-script = ExtResource("3_r3fl7")
+script = ExtResource("3_lquwl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hurtbox/AnimatableBody3D/Area3D" unique_id=2115828908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20103)
