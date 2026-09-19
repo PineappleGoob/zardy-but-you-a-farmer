@@ -20,6 +20,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=141592199]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=304151610]
 layout_mode = 3
