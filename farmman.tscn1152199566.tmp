@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://dowukntehgqsa"]
+
+[ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="1_oq881"]
+[ext_resource type="Script" uid="uid://7uuroegw15p1" path="res://shopkeeparea.gd" id="2_74e3h"]
+[ext_resource type="Script" uid="uid://c5mlp6r4mts0r" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_3d.gd" id="3_2awf3"]
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.gd" id="3_74e3h"]
+[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="5_5kqp5"]
+[ext_resource type="PackedScene" uid="uid://dnhnpev4r45ti" path="res://balloon.tscn" id="6_5kqp5"]
+
+[sub_resource type="Environment" id="Environment_758y0"]
+background_mode = 1
+background_color = Color(0.0031138188, 0.12986287, 0.104521535, 1)
+background_energy_multiplier = 1.16
+ambient_light_energy = 2.81
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2awf3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5kqp5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_is3pn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqtem"]
+size = Vector3(15.700928, 1, 27.022827)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjqq5"]
+size = Vector3(91.61145, 1, 26.68982)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njvaj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g01rj"]
+size = Vector3(1, 1, 0.9805908)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1a6q6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lkra7"]
+size = Vector3(0.529541, 1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vbf11"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbncw"]
+resource_local_to_scene = true
+render_priority = 1
+shading_mode = 0
+albedo_color = Color(0.44929606, 0.23670241, 0.050253212, 1)
+albedo_texture_msdf = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cmk2n"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(13, 21)
+material = SubResource("StandardMaterial3D_fbncw")
+size = Vector3(0.9790039, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wq02u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uw5rc"]
+size = Vector3(1.5769043, 3, 1.5699463)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wq02u"]
+transparency = 1
+albedo_color = Color(0, 0.9882353, 0.30588236, 0.21960784)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uw5rc"]
+material = SubResource("StandardMaterial3D_wq02u")
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hsnt"]
+size = Vector3(3, 3, 3)
+
+[node name="Farmman" type="Node3D" unique_id=29309356]
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=937869895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.439224, -1.350662, -10.39403)
+script = ExtResource("1_oq881")
+
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=1495500676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+environment = SubResource("Environment_758y0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=94768599]
+shape = SubResource("CapsuleShape3D_2awf3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=329402320]
+mesh = SubResource("CapsuleMesh_5kqp5")
+
+[node name="da roof but floor" type="StaticBody3D" parent="." unique_id=907967768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7730713, -2.869259, -4.739319)
+physics_material_override = SubResource("PhysicsMaterial_is3pn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="da roof but floor" unique_id=767833082]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0.024780273, 0, -0.19696045)
+mesh = SubResource("BoxMesh_oqtem")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="da roof but floor" unique_id=16858851]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 584.795, 0.02650851, 0, 0)
+visibility_parent = NodePath("../MeshInstance3D")
+shape = SubResource("BoxShape3D_sjqq5")
+
+[node name="shed" type="Node" parent="." unique_id=1668242151]
+
+[node name="shed" type="StaticBody3D" parent="shed" unique_id=1250083348]
+transform = Transform3D(11.258695, 0, 0, 0, 5.6080227, 0, 0, 0, 4.3341537, 0, 1.3630834, 5.7784905)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="shed/shed" unique_id=1070313838]
+material_override = SubResource("StandardMaterial3D_njvaj")
+mesh = SubResource("BoxMesh_g01rj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shed/shed" unique_id=1118727539]
+transform = Transform3D(1, 0, 0, 0, 0.9999918, 0, 0, 0, 0.99999964, 0, 0, 0)
+shape = SubResource("BoxShape3D_1a6q6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="shed" unique_id=1694444157]
+transform = Transform3D(9.303259, -0.1473768, 0, 2.7898083, 0.4914619, 0, 0, 0, 4.334153, -2.6700675, 5.0111227, 5.8188686)
+material_override = SubResource("StandardMaterial3D_njvaj")
+mesh = SubResource("BoxMesh_lkra7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="shed" unique_id=1627286147]
+transform = Transform3D(9.3382015, 0.14107506, 0, -2.670518, 0.49330783, 0, 0, 0, 4.3341537, 2.3720474, 5.0111227, 5.8188686)
+material_override = SubResource("StandardMaterial3D_njvaj")
+mesh = SubResource("BoxMesh_lkra7")
+
+[node name="table" type="Node" parent="." unique_id=872364857]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table" unique_id=185559285]
+transform = Transform3D(8.468959, 0, 0, 0, 0.34856582, 0, 0, 0, 3.4394948, -2.5791214, 0, 1.799236)
+physics_material_override = SubResource("PhysicsMaterial_vbf11")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="table/StaticBody3D" unique_id=194687126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40734953, 0, 0)
+mesh = SubResource("BoxMesh_cmk2n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D" unique_id=787120129]
+transform = Transform3D(1, 0, 0, 0, 0.9999918, 0, 0, 0, 0.99999964, 0.39685148, 0, 0)
+shape = SubResource("BoxShape3D_1a6q6")
+
+[node name="quest guy" type="Node" parent="." unique_id=104562071]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="quest guy" unique_id=689732094]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="quest guy/StaticBody3D" unique_id=545952102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("CapsuleMesh_wq02u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="quest guy/StaticBody3D" unique_id=1966423107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018432617, 0, -0.9953003)
+shape = SubResource("BoxShape3D_uw5rc")
+
+[node name="Area3D" type="Area3D" parent="quest guy/StaticBody3D" unique_id=1787979575]
+script = ExtResource("2_74e3h")
+
+[node name="DialogueActionable3D" type="Area3D" parent="quest guy/StaticBody3D" unique_id=1311325854]
+script = ExtResource("3_2awf3")
+metadata/_custom_type_script = "uid://c5mlp6r4mts0r"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="quest guy/StaticBody3D/DialogueActionable3D" unique_id=186477257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("BoxMesh_uw5rc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="quest guy/StaticBody3D/DialogueActionable3D" unique_id=227849704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_1hsnt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1794815669]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1549624744]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control" unique_id=1318196991]
+layout_mode = 0
+offset_right = 1126.0
+offset_bottom = 648.0
+touch_dragger_enabled = true
+drag_area_highlight_in_editor = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1080228485]
+layout_mode = 0
+offset_top = 469.0
+offset_right = 1149.0
+offset_bottom = 647.0
+
+[node name="DialogueLabel" type="RichTextLabel" parent="CanvasLayer/Control/HBoxContainer" unique_id=267399567]
+layout_mode = 2
+script = ExtResource("3_74e3h")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+metadata/_custom_type_script = "uid://g32um0mltv5d"
+
+[node name="DialogueManagerExampleBalloon" type="CanvasLayer" parent="." unique_id=2132433417]
+script = ExtResource("5_5kqp5")
+metadata/_custom_type_script = "uid://d1wt4ma6055l8"
+
+[node name="ExampleBalloon" parent="." unique_id=38036521 instance=ExtResource("6_5kqp5")]
