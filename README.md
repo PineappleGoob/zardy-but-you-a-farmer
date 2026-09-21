@@ -9,5 +9,5 @@ Night Harvistor
 
 
 Screenshot:
-![screenshot of maze]([path/to/image.png](https://raw.githubusercontent.com/PineappleGoob/zardy-but-you-a-farmer/refs/heads/main/Screenshot%202026-09-20%20233732.png))
+![screenshot of maze](https://raw.githubusercontent.com/PineappleGoob/zardy-but-you-a-farmer/refs/heads/main/Screenshot%202026-09-20%20233732.png)
 
