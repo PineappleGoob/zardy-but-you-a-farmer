@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cys1510dji1xd"
+path="res://.godot/imported/Bat Cave Ambience With High Squeaks and Echos.mp3-5f9f38539b12a04df6bd186943fd35eb.mp3str"
+
+[deps]
+
+source_file="res://Bat Cave Ambience With High Squeaks and Echos.mp3"
+dest_files=["res://.godot/imported/Bat Cave Ambience With High Squeaks and Echos.mp3-5f9f38539b12a04df6bd186943fd35eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

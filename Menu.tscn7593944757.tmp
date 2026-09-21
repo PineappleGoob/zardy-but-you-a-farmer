@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://bxho7ojolwkct"]
+
+[ext_resource type="Texture2D" uid="uid://cu7aphe5jr5o6" path="res://tileable_grass.png" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://fwy5higjpelo" path="res://Work for farm man5.png" id="2_dlksc"]
+[ext_resource type="Shader" uid="uid://cpe05cc8cn1p5" path="res://Menu.gdshader" id="2_n4eug"]
+[ext_resource type="Texture2D" uid="uid://bvjx1ncsyxsoi" path="res://Work for farm man6.png" id="4_hcwhg"]
+[ext_resource type="Texture2D" uid="uid://d1tc32xdmqjww" path="res://New Project (22).png" id="5_5p1lm"]
+[ext_resource type="Texture2D" uid="uid://cd5pmcpeoctgg" path="res://New Project (23).png" id="6_1igrg"]
+[ext_resource type="Script" uid="uid://eksgi1i7lgvo" path="res://control.gd" id="7_dlksc"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_32mqo"]
+rayleigh_coefficient = 4.61
+night_sky = ExtResource("2_dlksc")
+
+[sub_resource type="Sky" id="Sky_ywb8w"]
+sky_material = SubResource("PhysicalSkyMaterial_32mqo")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_wq02u"]
+background_mode = 2
+sky = SubResource("Sky_ywb8w")
+volumetric_fog_density = 0.23
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ttkge"]
+exposure_multiplier = 0.503
+auto_exposure_enabled = true
+dof_blur_far_enabled = true
+
+[sub_resource type="Compositor" id="Compositor_32isk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcwhg"]
+shader = ExtResource("2_n4eug")
+shader_parameter/crt_enabled = true
+shader_parameter/scanLineFac = 0.1
+shader_parameter/scanLineWidth = 0.25
+shader_parameter/scanLineSpeed = 0.5
+shader_parameter/linearFac = 1.3
+shader_parameter/nearestFac = 0.0
+shader_parameter/flicker_enabled = true
+shader_parameter/flicker_strength = 0.015
+shader_parameter/abberation_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_dlksc"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("ShaderMaterial_hcwhg")
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5rc"]
+albedo_texture = ExtResource("1_uubjt")
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uw5rc"]
+material = SubResource("StandardMaterial3D_uw5rc")
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_uw5rc"]
+
+[sub_resource type="Sky" id="Sky_wq02u"]
+sky_material = SubResource("PhysicalSkyMaterial_uw5rc")
+
+[sub_resource type="Environment" id="Environment_uw5rc"]
+sky = SubResource("Sky_wq02u")
+sky_custom_fov = 51.5
+ambient_light_energy = 12.12
+reflected_light_source = 2
+glow_intensity = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.46
+adjustment_enabled = true
+adjustment_brightness = 0.71
+adjustment_contrast = 1.25
+adjustment_saturation = 1.38
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uw5rc"]
+shader = ExtResource("2_n4eug")
+shader_parameter/crt_enabled = true
+shader_parameter/scanLineFac = 0.1
+shader_parameter/scanLineWidth = 0.25
+shader_parameter/scanLineSpeed = 0.5
+shader_parameter/linearFac = 1.3
+shader_parameter/nearestFac = 0.0
+shader_parameter/flicker_enabled = true
+shader_parameter/flicker_strength = 0.015
+shader_parameter/abberation_enabled = true
+
+[sub_resource type="SystemFont" id="SystemFont_hcwhg"]
+font_names = PackedStringArray("SimSun-ExtG")
+font_weight = 575
+
+[node name="Menu" type="Node3D" unique_id=652719155]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=580272148]
+transform = Transform3D(0.6888442, -0.27507135, -0.6706933, 0, 0.9252097, -0.3794562, 0.72490954, 0.2613862, 0.6373254, 0, -0.36622685, 0)
+environment = SubResource("Environment_wq02u")
+attributes = SubResource("CameraAttributesPractical_ttkge")
+compositor = SubResource("Compositor_32isk")
+fov = 67.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1262171988]
+transform = Transform3D(2, 5.9604645e-08, 1.4901161e-07, 0, 2.0000005, -1.4901161e-08, 0, 0, 1.0000001, 0.19660047, -0.091602325, -0.51619434)
+extra_cull_margin = 1588.76
+mesh = SubResource("QuadMesh_dlksc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1515565253]
+transform = Transform3D(15.0560255, 0, 0, 0, 1, 0, 0, 0, 67.5286, 1.0128554, -0.5666499, -0.6597719)
+mesh = SubResource("PlaneMesh_uw5rc")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1600976822]
+transform = Transform3D(1.865188, 0, 0.7218543, 0, 2, 0, -0.7218543, 0, 1.865188, 0.29960334, 0.403216, -2.7574556)
+texture_filter = 0
+texture = ExtResource("4_hcwhg")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1999716581]
+transform = Transform3D(0.09983541, 0, -0.0057346113, 0, 0.09999999, 0, 0.0057346113, 0, 0.09983541, 1.0614514, 0.07002829, -2.7865143)
+texture_filter = 0
+texture = ExtResource("5_5p1lm")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1893369351]
+transform = Transform3D(0.012268711, 0, -0.015794896, 0, 0.02, 0, 0.015794896, 0, 0.012268711, 1.1180398, 0.41765946, -0.09087002)
+texture_filter = 0
+texture = ExtResource("6_1igrg")
+
+[node name="Sprite3D4" type="Sprite3D" parent="." unique_id=30934526]
+transform = Transform3D(0.012268711, 0, -0.015794896, 0, 0.02, 0, 0.015794896, 0, 0.012268711, 0.66562676, 1.1163688, -0.8871263)
+texture_filter = 0
+texture = ExtResource("6_1igrg")
+
+[node name="Sprite3D6" type="Sprite3D" parent="." unique_id=550615983]
+transform = Transform3D(0.012268711, 0, -0.015794896, 0, 0.02, 0, 0.015794896, 0, 0.012268711, 1.524163, 1.091053, -0.22131062)
+texture_filter = 0
+texture = ExtResource("6_1igrg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="." unique_id=1371612638]
+transform = Transform3D(0.012268711, 0, -0.015794896, 0, 0.02, 0, 0.015794896, 0, 0.012268711, 0.9282519, 0.68347275, -0.4071616)
+texture_filter = 0
+texture = ExtResource("6_1igrg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2085031927]
+environment = SubResource("Environment_uw5rc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=913235933]
+transform = Transform3D(0.6396294, 0.6668068, 0.38241717, 0.041919354, -0.5270145, 0.8488218, 0.7675396, -0.5269007, -0.36504608, 13.011247, 16.582355, -19.297026)
+light_energy = 0.806
+sky_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=213196181]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2101520478]
+visible = false
+material = SubResource("ShaderMaterial_uw5rc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=790657804]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_dlksc")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=560018500]
+layout_mode = 0
+offset_left = -318.0
+offset_top = -52.0
+offset_right = 763.0
+offset_bottom = 368.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=1956430037]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1043523087]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hcwhg")
+theme_override_font_sizes/font_size = 52
+text = "Night Harvistor"
+horizontal_alignment = 1
+language = "en"
+
+[node name="Respawn" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=292175068]
+layout_mode = 2
+text = "Animate"
+
+[node name="Menu" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=186356004]
+layout_mode = 2
+text = "No"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control" unique_id=222570209]
+wait_time = 1.8359999999999999
+one_shot = true

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 50.0
+const SPEED = 15.0
 const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.002
 var health = 1
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		farmchat()
 	if rattalk == 1 && rattalking == 0:
 		rattalk = 0
-		rattalking = 1
+		farmtalking = 1
 		ratchat()
 
 	if health == 0:

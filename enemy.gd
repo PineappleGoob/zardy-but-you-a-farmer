@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 enum State { IDLE, CHASING }
 var current_state: State = State.IDLE
-@export var speed := 3
+@export var speed := 12
 @export var me_ol_eyes := 15
 
 @onready var player: CharacterBody3D = $"../player"
@@ -33,6 +33,7 @@ func _physics_process(delta: float):
 
 	match current_state:
 		State.IDLE:
+			speed = 12
 			if is_waiting:
 				velocity.x = move_toward(velocity.x, 0, speed)
 				velocity.z = move_toward(velocity.z, 0, speed)
@@ -56,6 +57,7 @@ func _physics_process(delta: float):
 			move_along_path(delta)
 			
 		State.CHASING:
+			speed = 15
 			nav_ag.target_position = player.global_position
 			move_along_path(delta)
 

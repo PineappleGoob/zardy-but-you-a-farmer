@@ -3,6 +3,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cdnn8i15fkkgv" path="res://jumpscare.tres" id="1_6rciv"]
 [ext_resource type="Script" uid="uid://eksgi1i7lgvo" path="res://control.gd" id="2_4qc3y"]
 [ext_resource type="Script" uid="uid://bxfyfqg485yl4" path="res://animated_sprite_2d.gd" id="2_578iv"]
+[ext_resource type="AudioStream" uid="uid://bp7n6l4nr4qyg" path="res://Jumpscare Sound Effect.mp3" id="4_4qc3y"]
 
 [sub_resource type="SystemFont" id="SystemFont_ttkge"]
 font_names = PackedStringArray("SimSun-ExtG")
@@ -55,14 +56,19 @@ text = "Dead boi"
 horizontal_alignment = 1
 language = "en"
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=315446433]
+[node name="Respawn" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=315446433]
 layout_mode = 2
 text = "ReAnimate?"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1976076910]
+[node name="Menu" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1976076910]
 layout_mode = 2
 text = "Quit to Menu"
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Control" unique_id=279559154]
 wait_time = 1.8359999999999999
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=855307846]
+stream = ExtResource("4_4qc3y")
+volume_db = 7.596
+autoplay = true
