@@ -9,14 +9,20 @@ var farmtalk = 0
 var farmtalking = 0
 var dialogue1 = load("res://test.dialogue")
 var ratdialogue = load("res://rat.dialogue")
+@onready var plants_label: Label = %Label
+@onready var plantui: Control = %Control
 var rattalk = 0
 var rattalking = 0
-
+var plant1 = 0
+var plant2 = 0
+var plant3 = 0
+var plant4 = 0
 
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	DialogueManager.dialogue_ended.connect(_dialogue_end)
+	plantui.hide()
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
@@ -25,6 +31,13 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
+	var total_plant = plant1 + plant2 + plant3 + plant4
+	var total_plant_int = total_plant
+	total_plant = str(total_plant)
+	
+	plants_label.text = "Plants: " + total_plant + "/4"
+	
+	
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
@@ -42,6 +55,9 @@ func _physics_process(delta: float) -> void:
 	if health == 0:
 		print('test3')
 		get_tree().change_scene_to_file("res://jumpscare.tscn")
+	if total_plant_int == 4:
+		print('test3')
+		get_tree().change_scene_to_file("res://win.tscn")
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -76,5 +92,6 @@ func _dialogue_end(resource):
 		print('dial')
 		farmtalking = 0
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		plantui.show()
 	
 	

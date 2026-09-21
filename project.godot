@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Zardy but you a farmer"
-run/main_scene="uid://dkcpu666t7gg4"
+run/main_scene="uid://bxho7ojolwkct"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dkcpu666t7gg4"]
 
+[ext_resource type="Script" uid="uid://dd1qclgr845t0" path="res://plant2.gd" id="1_0wrwb"]
 [ext_resource type="Texture2D" uid="uid://bj3x5fj23pdat" path="res://New Project (21).png" id="1_6arex"]
+[ext_resource type="Script" uid="uid://cw3oyi2n16d77" path="res://plant4.gd" id="1_j0scp"]
 [ext_resource type="Script" uid="uid://bimkrvca7q7ho" path="res://rat_area.gd" id="2_yqn75"]
+[ext_resource type="Script" uid="uid://b5yn8bcx65qrp" path="res://plant3.gd" id="3_d6n02"]
 [ext_resource type="Texture2D" uid="uid://cb8ur34k2t" path="res://Work for farm man2.png" id="3_tqw2x"]
 [ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="4_ff8xq"]
+[ext_resource type="Texture2D" uid="uid://cypnn2fysn088" path="res://Something7 (1).png" id="4_rrpue"]
+[ext_resource type="Script" uid="uid://dwuctylj61lyo" path="res://plant1__3d.gd" id="5_0wrwb"]
 [ext_resource type="Script" uid="uid://ffod1hns4dqo" path="res://enemy.gd" id="5_ovb84"]
 [ext_resource type="Script" uid="uid://b8ijt83s82sd6" path="res://area_3d.gd" id="6_2uyr3"]
 [ext_resource type="Script" uid="uid://cs5olpbh80yox" path="res://animatable_body_3d.gd" id="7_rrpue"]
@@ -42,6 +47,9 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_man7o"]
 albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wq02u"]
+size = Vector3(0.2548828, 1, 0.4885254)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwh3j"]
 albedo_color = Color(1, 0.9529412, 0, 1)
@@ -85,13 +93,11 @@ albedo_color = Color(0.68235296, 0.5176471, 0.60784316, 0)
 size = Vector3(0.24145508, 1, 0.43408203)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6rcl"]
-albedo_color = Color(0, 0, 0, 1)
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_museh"]
 albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2gn3"]
-albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="Environment" id="Environment_man7o"]
 background_mode = 1
@@ -132,6 +138,10 @@ size = Vector3(3, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6n02"]
 size = Vector3(3, 3, 3)
+
+[sub_resource type="SystemFont" id="SystemFont_dyoh6"]
+font_names = PackedStringArray("SimSun-ExtG")
+font_weight = 575
 
 [node name="WhateverYouWant,YourGonnaBeMakingMazesHere" type="Node3D" unique_id=233265415]
 
@@ -445,6 +455,13 @@ transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, 28.72
 use_collision = true
 size = Vector3(0.06669617, 1.3212891, 0.11287364)
 material = SubResource("StandardMaterial3D_man7o")
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Plant" unique_id=1635900891]
+script = ExtResource("1_j0scp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Plant/Area3D" unique_id=1160535143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0.11372113, 0, -0.010131836)
+shape = SubResource("BoxShape3D_wq02u")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D" unique_id=861077827]
 transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, 3.0650635, 0.5948032, -38.55945)
@@ -794,6 +811,13 @@ use_collision = true
 size = Vector3(0.10470706, 1.3331757, 0.09318024)
 material = SubResource("StandardMaterial3D_73fgj")
 
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/plant" unique_id=1805398413]
+script = ExtResource("1_0wrwb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/plant/Area3D" unique_id=211303250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0.3725586, 0, -0.010131717)
+shape = SubResource("BoxShape3D_wq02u")
+
 [node name="Crouch box24" type="CSGBox3D" parent="NavigationRegion3D" unique_id=325258706]
 transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, 56.95009, 0.55405796, -6.0261364)
 use_collision = true
@@ -1057,6 +1081,13 @@ transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, 83.79
 use_collision = true
 size = Vector3(0.049958125, 1.3331757, 0.0614167)
 material = SubResource("StandardMaterial3D_l842t")
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Plant2" unique_id=811385935]
+script = ExtResource("3_d6n02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Plant2/Area3D" unique_id=2089810393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0.3725586, 0, -0.010131717)
+shape = SubResource("BoxShape3D_wq02u")
 
 [node name="Crouch box54" type="CSGBox3D" parent="NavigationRegion3D" unique_id=673990347]
 transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, 72.52967, 0.55405796, -3.8875504)
@@ -1407,7 +1438,12 @@ texture_filter = 0
 texture = ExtResource("3_tqw2x")
 
 [node name="Sprite3D35" type="Sprite3D" parent="NavigationRegion3D/CSGBox3D55" unique_id=2059890699]
-transform = Transform3D(-0.0052185766, 0, 0.99997383, 0, 1, 0, -0.7199809, 0, -0.0072480254, 3.1779013, 0, -5.345189)
+transform = Transform3D(-0.0052185766, 0, 0.99997383, 0, 1, 0, -0.7199809, 0, -0.007248025, 1.0315037, -0.103868246, -4.1003227)
+texture_filter = 0
+texture = ExtResource("3_tqw2x")
+
+[node name="Sprite3D35" type="Sprite3D" parent="NavigationRegion3D/CSGBox3D55/Sprite3D35" unique_id=963537905]
+transform = Transform3D(-0.0052185766, 0, 0.99997383, 0, 1, 0, -0.7199809, 0, -0.007248025, 3.1779008, 0, -5.020502)
 texture_filter = 0
 texture = ExtResource("3_tqw2x")
 
@@ -1564,112 +1600,29 @@ use_collision = true
 size = Vector3(0.24316406, 0.7630615, 0.35697937)
 material = SubResource("StandardMaterial3D_m6rcl")
 
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Gplant" unique_id=1984160747]
+transform = Transform3D(-0.0054546706, 0, -1.0118785, 0, 0.95055574, 0, 0.28548783, 0, -0.019333445, 0.0762825, 0.254955, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_rrpue")
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Gplant" unique_id=1235097081]
+script = ExtResource("5_0wrwb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Gplant/Area3D" unique_id=649612951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0.3725586, 0, -0.010131717)
+shape = SubResource("BoxShape3D_wq02u")
+
 [node name="Planks, axe breaker" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1045237388]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -9.163429, 0.5948032, 20.6596)
+transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -105.16092, 0.5948032, -368.99463)
 use_collision = true
 size = Vector3(0.24316406, 1.3212891, 0.6599388)
 material = SubResource("StandardMaterial3D_museh")
 
-[node name="Planks, axe breaker2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=408739373]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -20.559433, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1352114913]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -30.323997, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1195573860]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -40.974762, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker5" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1280446367]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -55.636017, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker6" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1684970376]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -67.83771, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker7" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1128081909]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -76.1496, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker8" type="CSGBox3D" parent="NavigationRegion3D" unique_id=892070638]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -84.766464, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="possible no kill zone" type="CSGBox3D" parent="NavigationRegion3D" unique_id=929599818]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -26.191269, 1.3328453, 41.059654)
-use_collision = true
-size = Vector3(0.24316406, 1.7268066, 1.1337347)
-material = SubResource("StandardMaterial3D_m2gn3")
-
-[node name="Planks, axe breaker9" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1438038643]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -93.344055, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker10" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1151018971]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -103.260284, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker11" type="CSGBox3D" parent="NavigationRegion3D" unique_id=215950474]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -113.27815, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker12" type="CSGBox3D" parent="NavigationRegion3D" unique_id=547114041]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -122.58377, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker13" type="CSGBox3D" parent="NavigationRegion3D" unique_id=568338608]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -134.45004, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker14" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1755719748]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -143.168, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker15" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2046899704]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -153.08679, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
-[node name="Planks, axe breaker16" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1610388306]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -163.63412, 0.5948032, 42.36857)
-use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
-material = SubResource("StandardMaterial3D_museh")
-
 [node name="Planks, axe breaker17" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2146759363]
-transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -178.35706, 0.5948032, 42.36857)
+transform = Transform3D(11.742383, 0, 0, 0, 3.6399999, 0, 0, 0, 13.288706, -178.35706, 0.5948032, 39.02179)
 use_collision = true
-size = Vector3(0.24316406, 1.3212891, 0.8328991)
+size = Vector3(0.24316406, 1.3212891, 0.32919645)
 material = SubResource("StandardMaterial3D_museh")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D" unique_id=834771469]
@@ -1690,7 +1643,7 @@ use_collision = true
 radius = 0.6478102
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1920041292]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.497604, -2.6845083, 62.397644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.88432, -2.6845083, 82.22865)
 script = ExtResource("4_ff8xq")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=1087180123]
@@ -1738,7 +1691,6 @@ shape = SubResource("CapsuleShape3D_l842t")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy" unique_id=1397781179]
 path_desired_distance = 2.0
 use_3d_avoidance = true
-debug_enabled = true
 
 [node name="VisionRay" type="RayCast3D" parent="Enemy" unique_id=812452081]
 transform = Transform3D(-0.017613549, 18.74149, 0, -0.7787108, -0.42391106, 0, 0, 0, 1, -0.05306244, -0.4612224, 0)
@@ -1811,3 +1763,37 @@ transform = Transform3D(0.324, 0, 0, 0, 0.29999998, 0, 0, 0, 1, 0, 0, -1)
 billboard = 2
 texture = ExtResource("11_2uyr3")
 script = ExtResource("12_rrpue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1809792640]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1864704056]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1285498786]
+layout_mode = 0
+offset_left = -459.0
+offset_top = -126.0
+offset_right = 693.0
+offset_bottom = 208.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=1912104243]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1986137944]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_dyoh6")
+theme_override_font_sizes/font_size = 52
+text = "Plants: "
+horizontal_alignment = 1
+language = "en"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control" unique_id=663266610]
+wait_time = 1.8359999999999999
+one_shot = true
