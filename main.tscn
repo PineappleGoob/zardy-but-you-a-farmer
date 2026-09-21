@@ -5,6 +5,16 @@
 [ext_resource type="Script" uid="uid://cs5olpbh80yox" path="res://animatable_body_3d.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://b8ijt83s82sd6" path="res://area_3d.gd" id="3_lquwl"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38a3x"]
+shading_mode = 0
+diffuse_mode = 1
+albedo_color = Color(0.76350695, 0, 0.12695241, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_32isk"]
+material = SubResource("StandardMaterial3D_38a3x")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywb8w"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lquwl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
@@ -52,16 +62,6 @@ lightmap_size_hint = Vector2i(13, 21)
 material = SubResource("StandardMaterial3D_noarx")
 size = Vector3(0.9790039, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ywb8w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38a3x"]
-shading_mode = 0
-diffuse_mode = 1
-albedo_color = Color(0.76350695, 0, 0.12695241, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_32isk"]
-material = SubResource("StandardMaterial3D_38a3x")
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_1bvp3"]
 vertices = PackedVector3Array(30.98349, 0.18178177, 12.329027, 30.98349, 0.18178177, 13.079027, 35.48349, 0.18178177, 13.079027, 30.23349, 0.18178177, 11.579027, 35.48349, 0.18178177, 1.5790272, 1.73349, 0.18178177, 1.5790272, 1.73349, 0.18178177, 11.579027, 30.98349, 0.18178177, 14.079027, 30.98349, 0.18178177, 21.079027, 30.98349, 0.18178177, 23.079027, 35.48349, 0.18178177, 23.079027, 30.23349, 0.18178177, 14.829027, 30.23349, 0.18178177, 20.329027, 28.98349, 0.18178177, 14.829027, 28.98349, 0.18178177, 20.329027, 27.73349, 0.18178177, 20.329027, 26.98349, 0.18178177, 21.079027, 1.73349, 0.18178177, 14.829027, 1.73349, 0.18178177, 29.829027, 26.98349, 0.18178177, 29.829027, 30.98349, 0.18178177, 30.329027, 35.48349, 0.18178177, 30.329027, 30.98349, 0.18178177, 32.329025, 30.23349, 0.18178177, 33.079025, 35.48349, 0.18178177, 43.829025, 1.73349, 0.18178177, 33.079025, 1.73349, 0.18178177, 43.829025)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 4), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 1, 2), PackedInt32Array(10, 9, 8), PackedInt32Array(7, 2, 11), PackedInt32Array(11, 2, 12), PackedInt32Array(12, 2, 8), PackedInt32Array(8, 2, 10), PackedInt32Array(11, 12, 13), PackedInt32Array(13, 12, 14), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 16, 13), PackedInt32Array(13, 16, 17), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(9, 10, 20), PackedInt32Array(20, 10, 21), PackedInt32Array(22, 20, 21), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 24)]
@@ -80,6 +80,24 @@ shadow_enabled = true
 [node name="Enemy" type="CharacterBody3D" parent="." unique_id=1340647909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.65589, -0.2713927, 0)
 script = ExtResource("1_1bvp3")
+
+[node name="Area3D" type="Area3D" parent="Enemy" unique_id=2048499996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6558914, -0.7286073, 0)
+script = ExtResource("3_lquwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy/Area3D" unique_id=499308392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.20102978)
+mesh = SubResource("BoxMesh_32isk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/Area3D" unique_id=2115828908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.20102978)
+shape = SubResource("BoxShape3D_ywb8w")
+
+[node name="hurtbox" type="Node" parent="Enemy" unique_id=1823253898]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Enemy/hurtbox" unique_id=681323795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, -1, -0.20102978)
+script = ExtResource("2_1bvp3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy" unique_id=519069757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46123576, -1.0187063, 0)
@@ -108,7 +126,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=1437652704]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.439224, -1.350662, -10.39403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.560776, -1.350662, -10.39403)
 script = ExtResource("1_h2yge")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=947739628]
@@ -172,23 +190,6 @@ mesh = SubResource("BoxMesh_ttkge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D" unique_id=1315970091]
 transform = Transform3D(1, 0, 0, 0, 0.9999918, 0, 0, 0, 0.99999964, 0.39685148, 0, 0)
 shape = SubResource("BoxShape3D_wq02u")
-
-[node name="hurtbox" type="Node" parent="." unique_id=1823253898]
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="hurtbox" unique_id=681323795]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20103)
-script = ExtResource("2_1bvp3")
-
-[node name="Area3D" type="Area3D" parent="hurtbox/AnimatableBody3D" unique_id=2048499996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.20103)
-script = ExtResource("3_lquwl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtbox/AnimatableBody3D/Area3D" unique_id=2115828908]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.20103)
-shape = SubResource("BoxShape3D_ywb8w")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hurtbox/AnimatableBody3D" unique_id=499308392]
-mesh = SubResource("BoxMesh_32isk")
 
 [node name="walls" type="Node" parent="." unique_id=416969991]
 

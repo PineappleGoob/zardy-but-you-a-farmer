@@ -10,10 +10,10 @@ var current_state: State = State.IDLE
 @onready var eyeline: RayCast3D = $VisionRay
 @onready var welp_lost_them: Timer = $lose_track
 @onready var patroltime: Timer = $patrol_timer
-
+@onready var patroltimeout: Timer = $patroltimeout
 var patrol_target: Vector3 = Vector3.ZERO
 var is_waiting: bool = false
-
+var patrolistimedout: bool = false
 func _ready():
 	print('enemy init')
 	# Wait for the first physics frame so the NavigationServer is ready
@@ -21,7 +21,7 @@ func _ready():
 	
 	welp_lost_them.timeout.connect(_on_lose_track_timer_timeout)
 	patroltime.timeout.connect(_on_patrol_wait_timer_timeout)
-	
+	patroltimeout.timeout.connect(_on_patrol_timeout_timer_timeout)
 	point_randomizing_commense()
 
 func _physics_process(delta: float):
@@ -47,8 +47,9 @@ func _physics_process(delta: float):
 			target_pos.y = 0
 			
 			# Check if we are close enough to the target
-			if current_pos.distance_to(target_pos) < 1.2:
+			if current_pos.distance_to(target_pos) < 5.2 or patrolistimedout == true:
 				is_waiting = true
+				patrolistimedout = false
 				patroltime.start()
 				return
 				
@@ -109,6 +110,10 @@ func player_be_gone():
 func _on_patrol_wait_timer_timeout():
 	is_waiting = false
 	point_randomizing_commense()
+	patroltimeout.start()
+	
+func _on_patrol_timeout_timer_timeout():
+	patrolistimedout = true
 
 func _on_lose_track_timer_timeout():
 	current_state = State.IDLE

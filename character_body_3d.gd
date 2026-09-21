@@ -1,14 +1,22 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 50.0
 const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.002
 var health = 1
 var farmtalk = 0
 var farmtalking = 0
+var dialogue1 = load("res://test.dialogue")
+var ratdialogue = load("res://rat.dialogue")
+var rattalk = 0
+var rattalking = 0
+
+
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	DialogueManager.dialogue_ended.connect(_dialogue_end)
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
@@ -21,11 +29,15 @@ func _physics_process(delta: float) -> void:
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
 		
-	print(farmtalking)
+	#print(farmtalking)
 	if farmtalk == 1 && farmtalking == 0:
 		farmtalk = 0
 		farmtalking = 1
 		farmchat()
+	if rattalk == 1 && rattalking == 0:
+		rattalk = 0
+		rattalking = 1
+		ratchat()
 
 	if health == 0:
 		print('test3')
@@ -33,6 +45,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
 	if farmtalking == 0:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -49,9 +62,19 @@ func _physics_process(delta: float) -> void:
 
 
 func farmchat():
-	var dialogue = load("res://test.dialogue")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
-	DialogueManager.show_dialogue_balloon(dialogue, "start")
-	farmtalking = 0
+	DialogueManager.show_dialogue_balloon(dialogue1, "start")
+	
+func ratchat():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
+	DialogueManager.show_dialogue_balloon(ratdialogue, "start")
+	
+func _dialogue_end(resource):
+	if resource == dialogue1 or resource == ratdialogue:
+		print('dial')
+		farmtalking = 0
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	

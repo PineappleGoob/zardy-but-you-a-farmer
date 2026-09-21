@@ -1,0 +1,10 @@
+~ start
+Rat: [[RAt|rAt|RaT]], Rat RAT?
+Rat: RAT RAT
+- Rat!
+	Rat: RAT RAT
+- Rat?
+	Rat: RAT RAT
+- End the conversation => END
+Rat: RAT RAT
+=> END

@@ -1,5 +1,5 @@
 extends Control
-
+@onready var showmenutimer: Timer = $Timer
 func show_menu():
 	modulate.a = 0.0
 	show()
@@ -9,12 +9,17 @@ func show_menu():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	modulate.a = 0.0
+	showmenutimer.start()
+	showmenutimer.timeout.connect(timerout)
 	hide()
-	show_menu()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+func timerout():
+	modulate.a = 0.0
+
+	
+	show_menu()

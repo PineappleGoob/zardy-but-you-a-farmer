@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://v81pw7ee8plp" path="res://character_body_3d.gd" id="1_oq881"]
 [ext_resource type="Script" uid="uid://7uuroegw15p1" path="res://shopkeeparea.gd" id="2_74e3h"]
-[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.gd" id="3_74e3h"]
+[ext_resource type="Texture2D" uid="uid://bmt74ecgcgiq1" path="res://New Project (20).png" id="3_is3pn"]
+[ext_resource type="Script" uid="uid://4u5cknvhkkrk" path="res://new_autoload_script.gd" id="4_oqtem"]
 [ext_resource type="Script" uid="uid://ccegaj3n2kdrw" path="res://balloon.gd" id="5_is3pn"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="6_is3pn"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="7_oqtem"]
@@ -322,6 +323,7 @@ shape = SubResource("BoxShape3D_1a6q6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="quest guy/StaticBody3D" unique_id=545952102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
 mesh = SubResource("CapsuleMesh_wq02u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="quest guy/StaticBody3D" unique_id=1966423107]
@@ -333,11 +335,18 @@ script = ExtResource("2_74e3h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="quest guy/StaticBody3D/Area3D" unique_id=186477257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
 mesh = SubResource("BoxMesh_uw5rc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="quest guy/StaticBody3D/Area3D" unique_id=227849704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_1hsnt")
+
+[node name="Sprite3D" type="Sprite3D" parent="quest guy/StaticBody3D" unique_id=972007676]
+transform = Transform3D(0.324, 0, 0, 0, 0.29999998, 0, 0, 0, 1, 0, 0, -1)
+billboard = 2
+texture = ExtResource("3_is3pn")
+script = ExtResource("4_oqtem")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1794815669]
 
@@ -354,20 +363,9 @@ offset_bottom = 648.0
 touch_dragger_enabled = true
 drag_area_highlight_in_editor = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1080228485]
-layout_mode = 0
-offset_top = 469.0
-offset_right = 1149.0
-offset_bottom = 647.0
-
-[node name="DialogueLabel" type="RichTextLabel" parent="CanvasLayer/Control/HBoxContainer" unique_id=267399567]
-layout_mode = 2
-script = ExtResource("3_74e3h")
-skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
-metadata/_custom_type_script = "uid://g32um0mltv5d"
-
 [node name="ExampleBalloon" type="CanvasLayer" parent="." unique_id=38036521]
 layer = 100
+visible = false
 script = ExtResource("5_is3pn")
 
 [node name="Balloon" type="Control" parent="ExampleBalloon" unique_id=154399927]

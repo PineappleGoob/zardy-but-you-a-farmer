@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bwq0tlrr5rkum"]
+
+[ext_resource type="Texture2D" uid="uid://b8jysmq2d6ke7" path="res://The beast-walk-Sheet.png" id="1_o5qi2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq5ds"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j14df"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aru2q"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j456"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_judcx"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h846p"]
+atlas = ExtResource("1_o5qi2")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq5ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j14df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aru2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j456")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_judcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h846p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jumpscare",
+"speed": 5.0
+}]

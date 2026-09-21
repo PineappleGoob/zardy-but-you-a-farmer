@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dotgmh34sedhc"]
 
+[ext_resource type="SpriteFrames" uid="uid://cdnn8i15fkkgv" path="res://jumpscare.tres" id="1_6rciv"]
 [ext_resource type="Script" uid="uid://eksgi1i7lgvo" path="res://control.gd" id="2_4qc3y"]
+[ext_resource type="Script" uid="uid://bxfyfqg485yl4" path="res://animated_sprite_2d.gd" id="2_578iv"]
 
 [sub_resource type="SystemFont" id="SystemFont_ttkge"]
 font_names = PackedStringArray("SimSun-ExtG")
@@ -10,7 +12,14 @@ font_weight = 575
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2106546275]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=878221705]
+position = Vector2(-0.5, -4)
+scale = Vector2(9.0234375, 4.984375)
+sprite_frames = ExtResource("1_6rciv")
+script = ExtResource("2_578iv")
+
 [node name="Label" type="Label" parent="." unique_id=203319520]
+visible = false
 offset_left = -213.0
 offset_top = -120.0
 offset_right = 215.0
@@ -20,7 +29,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=141592199]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=304151610]
 layout_mode = 3
@@ -34,7 +42,7 @@ layout_mode = 0
 offset_left = -2.0
 offset_top = -13.0
 offset_right = 1150.0
-offset_bottom = 642.0
+offset_bottom = 321.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=1558034230]
 layout_mode = 2
@@ -54,3 +62,7 @@ text = "ReAnimate?"
 [node name="Button2" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1976076910]
 layout_mode = 2
 text = "Quit to Menu"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control" unique_id=279559154]
+wait_time = 1.8359999999999999
+one_shot = true
