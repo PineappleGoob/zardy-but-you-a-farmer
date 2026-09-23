@@ -17,5 +17,4 @@ PineDev (Amir Murad): Coding, Design.
 Jesherson (Andrew Prchal): Art, Maze.
 Sonya Rashka: Writing, Maze.
 
-Halo (Little canadian): goofed off in vc while we worked.
-
+Halo (Little canadian): Emotional Support
