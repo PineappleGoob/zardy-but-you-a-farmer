@@ -11,3 +11,11 @@ Night Harvistor
 Screenshot:
 ![screenshot of maze](https://raw.githubusercontent.com/PineappleGoob/zardy-but-you-a-farmer/refs/heads/main/Screenshot%202026-09-20%20233732.png)
 
+
+
+PineDev (Amir Murad): Coding, Design.
+Jesherson (Andrew Prchal): Art, Maze.
+Sonya Rashka: Writing, Maze.
+
+Halo (Little canadian): goofed off in vc while we worked.
+
